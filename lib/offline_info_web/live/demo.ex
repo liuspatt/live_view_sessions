@@ -4,11 +4,11 @@ defmodule OfflineInfoWeb.DemoLive do
 
   def render(assigns) do
     ~H"""
-    <div id="hook" class="space-y-12 divide-y sm:mx-0 mx-4" phx-hook="Storage">
+    <div id="hook" phx-hook="Storage" class="space-y-12 divide-y sm:mx-0 mx-4" >
       <div class="text-4xl">
         <%= @data %>
-      </div>
-       <hr />
+           <hr />
+   <hr />
       <div class="flex flex-col">
         <button phx-click="button_with_data" phx-value-data="some_data_to_save">Set html data</button>
         <button phx-click="button_object">Set Data Object</button>
@@ -72,7 +72,7 @@ defmodule OfflineInfoWeb.DemoLive do
      |> assign(:data, json_data)
      |> push_event("store", %{
        key: :data,
-       data: Encrypt.encrypt(jsonPoison.encode!(data))
+       data: Encrypt.encrypt(Poison.encode!(data))
      })}
   end
 end
