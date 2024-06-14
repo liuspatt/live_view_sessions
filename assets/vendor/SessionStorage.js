@@ -6,6 +6,8 @@ const Storage = {
     },  
 
     store(obj) {
+        console.log("store data")
+        console.log(obj)
         sessionStorage.setItem(obj.key, obj.data)
     },
 
