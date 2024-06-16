@@ -17,10 +17,8 @@ defmodule OfflineInfoWeb.Router do
   scope "/", OfflineInfoWeb do
     pipe_through :browser
 
-    get "/", PageController, :home
-
     live_session :demo do
-      live "/demo", DemoLive, :index
+      live "/", DemoLive, :index
     end
   end
 
