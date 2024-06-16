@@ -12,7 +12,7 @@ defmodule OfflineInfoWeb.DemoLive do
       <div class="flex flex-col">
         <button phx-click="button_with_data" phx-value-data="some_data_to_save">Set html data</button>
         <button phx-click="button_object">Set Data Object</button>
-        <button phx-click="button_object">Clear</button>
+        <button phx-click="button_clear">Clear</button>
       </div>
     </div>
     """
@@ -75,6 +75,16 @@ defmodule OfflineInfoWeb.DemoLive do
      |> push_event("store", %{
        key: :data,
        data: Cipher.encrypt(json_data)
+     })}
+  end
+
+
+  def handle_event("button_clear", _, socket) do
+    {:noreply,
+     socket
+     |> assign(:data, nil)
+     |> push_event("clear", %{
+       key: :data
      })}
   end
 end
